@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization Complete — Trend Shorts Publisher</title>
+<style>
+body{font-family:Georgia,serif;max-width:720px;margin:3rem auto;padding:0 1.25rem;line-height:1.6;color:#222}
+h1{font-size:1.4rem}
+code{background:#f3f3f3;padding:.4rem .6rem;border-radius:6px;display:inline-block;word-break:break-all;font-size:.95rem}
+.hidden{display:none}
+footer{margin-top:3rem;font-size:.9rem;color:#666}
+</style>
+</head>
+<body>
+<h1>Authorization complete</h1>
+<p id="ok" class="hidden">TikTok returned an authorization code. Copy it into the automation tool to finish connecting the account:</p>
+<p id="code-wrap" class="hidden"><code id="code"></code></p>
+<p id="none" class="hidden">No authorization code found in this URL. If you arrived here from TikTok, the authorization may have been cancelled or failed.</p>
+<script>
+const p = new URLSearchParams(location.search);
+const c = p.get('code');
+if (c) {
+  document.getElementById('ok').classList.remove('hidden');
+  document.getElementById('code-wrap').classList.remove('hidden');
+  document.getElementById('code').textContent = c;
+} else {
+  document.getElementById('none').classList.remove('hidden');
+}
+</script>
+<footer>Trend Shorts Publisher — personal automation tool. <a href="index.html">Home</a></footer>
+</body>
+</html>
